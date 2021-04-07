@@ -1,5 +1,5 @@
 import React from "react";
-import "./../Styles/style.scss";
+import "./../App.scss";
 class Createplayers extends React.Component {
   state = {
     player1: "",
@@ -7,8 +7,6 @@ class Createplayers extends React.Component {
   };
 
   handleChange = (event) => {
-    console.log("Create player handleChange");
-    console.log(event.target.value);
     let player = event.target.id;
     this.setState({ [player]: event.target.value });
   };

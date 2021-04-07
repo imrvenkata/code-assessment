@@ -1,5 +1,5 @@
 import React from "react";
-import "./../Styles/style.scss";
+import "./../App.scss";
 class Navbar extends React.Component {
   render() {
     const { player1, player2, ties, playerName1, playerName2 } = this.props;
