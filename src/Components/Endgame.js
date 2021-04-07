@@ -15,9 +15,9 @@ class Endgame extends React.Component {
     return (
       <div className="wrapper">
         <div className="screen">
-          <p> {winner === "tied" ? tied : playerWin} </p>
+          <p>{ winner === "tied" ? tied : playerWin } </p>
           <button className="btn btn-primary" onClick={this.handleClick}>
-            Would you like to replay the game?
+            Replay?
           </button>
         </div>
       </div>

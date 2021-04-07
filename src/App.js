@@ -3,7 +3,7 @@ import Createplayers from "./Components/Createplayers";
 import Endgame from "./Components/Endgame";
 import Game from "./Components/Game";
 import Navbar from "./Components/Navbar";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
 class App extends React.Component {
@@ -70,11 +70,16 @@ class App extends React.Component {
           player2={player2}
           ties={ties}
         />
-        <Game
-          playerName1={playerName1}
-          playerName2={playerName2}
-          handleScore={this.handleScore}
-        />
+        <div className="container">
+          <div className="mt-4">
+            <button className="btn btn-warning" onClick={this.handleEndgame}> Reset </button>
+          </div>
+          <Game
+            playerName1={playerName1}
+            playerName2={playerName2}
+            handleScore={this.handleScore}
+          />
+        </div>
       </div>
     );
   }

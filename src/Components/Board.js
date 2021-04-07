@@ -20,7 +20,7 @@ class Board extends React.Component {
     let allTiles = document.getElementsByClassName("not-played");
     if (allTiles.length < 1) {
       handleScore("ties");
-      // endgame(true);
+      endgame(true);
       this.reset();
     }
   };
@@ -33,7 +33,7 @@ class Board extends React.Component {
       turn("player1", false, "player2", true);
       if (this.diagonal("X") || this.row("X") || this.column("X")) {
         handleScore("player1");
-        // endgame(true);
+        endgame(true);
         this.reset();
       }
     }
@@ -43,7 +43,7 @@ class Board extends React.Component {
       turn("player2", false, "player2", true);
       if (this.diagonal("O") || this.row("O") || this.column("O")) {
         handleScore("player2");
-        // endgame(true);
+        endgame(true);
         this.reset();
       }
     }
