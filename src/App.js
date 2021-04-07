@@ -1,10 +1,9 @@
-import logo from "./logo.svg";
-import "./App.css";
-
 import React from "react";
-import { render } from "@testing-library/react";
+import "./App.css";
+import Board from "./Components/Board";
 import Createplayers from "./Components/Createplayers";
 import Navbar from "./Components/Navbar";
+
 class App extends React.Component {
   state = {
     playerName1: "player1",
@@ -25,6 +24,7 @@ class App extends React.Component {
           ties={ties}
         />
         <Createplayers></Createplayers>
+        <Board />
       </div>
     );
   }

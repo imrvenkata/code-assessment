@@ -1,3 +1,4 @@
+$tiles: 0, 1, 2, 3, 4, 5, 6, 7, 8;
 .navbar {
   display: flex;
   flex-direction: row;
@@ -13,4 +14,74 @@
   justify-content: space-evenly;
   margin: auto;
   width: 70%;
+}
+.game {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 80vh;
+}
+
+.board {
+  height: 330px;
+  width: 330px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 6px 6px 10px gray;
+}
+
+.tile {
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 5em;
+  font-weight: bold;
+}
+
+@each $tile in $tiles {
+  @if $tile % 2 == 0 {
+    #tile#{$tile} {
+      border-left: 5px solid black;
+      border-bottom: 5px solid black;
+    }
+  } @else {
+    #tile#{$tile} {
+      border-top: 5px solid black;
+      border-right: 5px solid black;
+      border-bottom: 5px solid black;
+    }
+  }
+}
+
+.game p {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background: white;
+  width: 300px;
+  box-shadow: 6px 6px 5px gray;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
 }
