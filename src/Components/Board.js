@@ -1,9 +1,10 @@
 import React from "react";
-
+import "./../App.scss";
 class Board extends React.Component {
+  // generate tiles
   generateTiles = () => {
     let allTiles = [];
-    for (let i = 0; i < 9; i++) {
+    for (let t = 0; t < 9; t++) {
       allTiles.push("tile not-played");
     }
     return allTiles;
@@ -19,7 +20,7 @@ class Board extends React.Component {
     let allTiles = document.getElementsByClassName("not-played");
     if (allTiles.length < 1) {
       handleScore("ties");
-      endgame(true);
+      // endgame(true);
       this.reset();
     }
   };
@@ -32,27 +33,69 @@ class Board extends React.Component {
       turn("player1", false, "player2", true);
       if (this.diagonal("X") || this.row("X") || this.column("X")) {
         handleScore("player1");
-        endgame(true);
+        // endgame(true);
         this.reset();
       }
     }
+
     if (player2) {
       tile.innerHTML = "O";
-      turn("player2", false, "player1", true);
+      turn("player2", false, "player2", true);
       if (this.diagonal("O") || this.row("O") || this.column("O")) {
         handleScore("player2");
-        endgame(true);
+        // endgame(true);
         this.reset();
       }
     }
   };
 
+  /**
+   * Possible wins in tictactoe board
+   * 1. diagonal
+   * 2. Row
+   * 3. Column
+   *
+   * Board - Tiles
+   *
+   *    0   1   2
+   *    3   4   5
+   *    6   7   8
+   */
+
+  /**
+   *
+   *
+   *  Possible winning lines are
+   *    0  1  2
+   *    3  4  5
+   *    6  7  8
+   *    0  3  6
+   *    1  4  7
+   *    2  5  8
+   *    0  4  8
+   *    2  4  6
+   *
+   */
+
+  /**
+   *
+   * @param {*} play
+   * @returns true or false [win or not]
+   * diagonal winning options are
+   *    0       2
+   *        4
+   *    6       8
+   * option1:   0   4   8
+   * option2:   2   4   6
+   */
   diagonal = (play) => {
+    // calculating diagonal wins
     let left = [
       document.getElementById("tile0").innerHTML,
       document.getElementById("tile4").innerHTML,
       document.getElementById("tile8").innerHTML,
     ];
+
     let right = [
       document.getElementById("tile2").innerHTML,
       document.getElementById("tile4").innerHTML,
@@ -68,17 +111,28 @@ class Board extends React.Component {
     return false;
   };
 
+  /**
+   *
+   * @param {*} play
+   * @returns true or false [win or not]
+   * row winning options are
+   *    option1: 0   1   2
+   *    option2: 3   4   5
+   *    option3: 6   7   8
+   * */
   row = (play) => {
     let row1 = [
       document.getElementById("tile0").innerHTML,
       document.getElementById("tile1").innerHTML,
       document.getElementById("tile2").innerHTML,
     ];
+
     let row2 = [
       document.getElementById("tile3").innerHTML,
       document.getElementById("tile4").innerHTML,
       document.getElementById("tile5").innerHTML,
     ];
+
     let row3 = [
       document.getElementById("tile6").innerHTML,
       document.getElementById("tile7").innerHTML,
@@ -97,17 +151,28 @@ class Board extends React.Component {
     return false;
   };
 
+  /**
+   *
+   * @param {*} play
+   * @returns true or false [win or not]
+   * column winning options are
+   *    option1: 0   3   6
+   *    option2: 1   4   7
+   *    option3: 2   5   8
+   * */
   column = (play) => {
     let column1 = [
       document.getElementById("tile0").innerHTML,
       document.getElementById("tile3").innerHTML,
       document.getElementById("tile6").innerHTML,
     ];
+
     let column2 = [
       document.getElementById("tile1").innerHTML,
       document.getElementById("tile4").innerHTML,
       document.getElementById("tile7").innerHTML,
     ];
+
     let column3 = [
       document.getElementById("tile2").innerHTML,
       document.getElementById("tile5").innerHTML,
@@ -126,12 +191,14 @@ class Board extends React.Component {
     return false;
   };
 
+  //   to reset the board
   reset = () => {
     let allTiles = document.getElementsByClassName("tile");
-    for (let i = 0; i < allTiles.length; i++) {
-      allTiles[i].innerHTML = "";
-      allTiles[i].classList.add("not-played");
+    for (let t = 0; t < allTiles.length; t++) {
+      allTiles[t].innerHTML = "";
+      allTiles[t].classList.add("not-played");
     }
+    // generateTiles();
   };
 
   render() {
@@ -140,11 +207,11 @@ class Board extends React.Component {
         {this.generateTiles().map((element, i) => {
           return (
             <div
-              id={`tile${i}`}
               key={i}
+              id={`tile${i}`}
               className={element}
               onClick={this.handleClick}
-            />
+            ></div>
           );
         })}
       </div>
